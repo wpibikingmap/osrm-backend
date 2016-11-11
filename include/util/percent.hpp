@@ -4,6 +4,14 @@
 #include <atomic>
 #include <iostream>
 
+// For isatty()
+#ifdef WIN32
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
+#include <stdio.h>
+
 namespace osrm
 {
 namespace util
@@ -71,6 +79,13 @@ class Percent
             {
                 std::cout << ".";
             }
+#ifdef WIN32
+            if (!_isatty(_fileno(stdout)))
+                std::cout << std::endl;
+#else
+            if (!isatty(fileno(stdout)))
+                std::cout << std::endl;
+#endif
             std::cout.flush();
         }
     }

@@ -24,6 +24,8 @@
       - fixed a bug that could result in crashes when leaving a ferry directly onto a motorway ramp
     - Debug Tiles
       - Added support for turn penalties
+    - Internals
+      - Internal/Shared memory datafacades now share common memory layout and data loading code
 
 # 5.4.3
   - Changes from 5.4.2
